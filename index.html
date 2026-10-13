@@ -8,6 +8,7 @@
 <style>
 :root{--ink:#20231f;--paper:#f5f4ee;--card:#fffef9;--line:#d8d8cd;--accent:#355942;--soft:#e7eee6;--muted:#60685f;--warn:#6b4c14;--warnbg:#fff5d9}
 *{box-sizing:border-box}html{background:var(--paper)}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.45 Georgia,"Times New Roman",serif}button,input,select{font:inherit}button,select{cursor:pointer}button{border:2px solid var(--ink);background:var(--card);color:var(--ink);padding:10px 13px;border-radius:8px;font-weight:bold}button:hover,button:focus{background:var(--soft)}button:focus,input:focus,select:focus{outline:3px solid #9ab49b;outline-offset:2px}button:disabled{cursor:not-allowed;opacity:.55}input,select{min-width:0;width:100%;border:2px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);padding:10px}a{color:var(--accent)}.top{background:var(--card);border-bottom:2px solid var(--line);padding:14px max(16px,calc((100% - 1180px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-size:27px;font-weight:bold;letter-spacing:-.6px}.brand span{color:var(--accent)}.tag{font:14px Arial,sans-serif;color:var(--muted)}.wrap{max-width:1180px;margin:0 auto;padding:0 16px}.hero{padding:21px 0 17px}.hero h1{font-size:clamp(28px,4.3vw,42px);line-height:1.12;margin:0 0 8px}.hero p{color:var(--muted);margin:0;max-width:750px}.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.pill{display:inline-block;border:1px solid var(--line);border-radius:24px;padding:4px 9px;background:var(--soft);font:12px Arial,sans-serif}.status{font:13px Arial,sans-serif;color:var(--muted)}.status.online{color:var(--accent);font-weight:bold}.status.offline{color:var(--warn)}.layout{display:flex;align-items:flex-start;gap:16px}.maincol{flex:1 1 630px;min-width:0}.sidecol{flex:0 1 310px;min-width:255px}.panel{background:var(--card);border:2px solid var(--line);border-radius:12px;overflow:hidden;margin:0 0 16px}.panelhead{padding:13px 15px;border-bottom:2px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.panelhead h2{font-size:21px;margin:0}.inside{padding:15px}.muted{color:var(--muted)}.tiny{font:13px/1.45 Arial,sans-serif;color:var(--muted)}.roombar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.roombar label{font-weight:bold}.roombar select{width:auto;max-width:240px;flex:1}.messages{height:290px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:13px;background:#faf9f4}.msg{max-width:91%;border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:white;overflow-wrap:anywhere}.msg.mine{align-self:flex-end;background:var(--soft);border-color:#bdcbbc}.who{font:bold 12px Arial,sans-serif;color:var(--accent);margin-bottom:3px}.when{font:11px Arial,sans-serif;color:var(--muted);margin-top:4px}.compose{display:flex;align-items:stretch;gap:8px;padding:11px;border-top:2px solid var(--line)}.compose input{flex:1}.notice{font:13px/1.5 Arial,sans-serif;color:var(--muted);padding:0 14px 13px}.gamegrid{display:flex;gap:10px;flex-wrap:wrap}.gamecard{border:2px solid var(--line);border-radius:9px;padding:12px;flex:1 1 175px;min-width:150px}.gamecard h3{margin:0 0 5px;font-size:18px}.gamecard p{font-size:14px;color:var(--muted);margin:0 0 11px}.gamearea{margin-top:16px;border-top:2px dashed var(--line);padding-top:15px;min-height:90px}.board{display:flex;flex-wrap:wrap;gap:5px;width:225px;max-width:100%;margin:12px 0}.cell{width:calc(33.333% - 4px);height:67px;padding:0;font-size:27px}.game-status{font-weight:bold;margin:8px 0}.inline{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.inline input{flex:1 1 120px}.rankrow{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}.rankrow:last-child{border-bottom:0}.rankname{overflow-wrap:anywhere}.score{font-weight:bold;font-variant-numeric:tabular-nums}.empty{color:var(--muted);padding:12px 0}.separator{border:0;border-top:2px solid var(--line);margin:16px 0}.footer{text-align:center;color:var(--muted);font:13px Arial,sans-serif;padding:10px 0 30px}.warnbox{background:var(--warnbg);border:1px solid #e4ce90;border-radius:8px;padding:10px 12px;font:13px/1.5 Arial,sans-serif;color:#5f4719;margin:0 0 15px}.word{font-size:24px;letter-spacing:3px;font-weight:bold;margin:12px 0}.memboard{display:flex;flex-wrap:wrap;gap:7px;max-width:380px}.memcard{flex:1 0 20%;min-width:48px;padding:8px 0;min-height:48px}
+.pixel-avatar{display:grid;grid-template-columns:repeat(8,1fr);gap:0;flex:0 0 auto;overflow:hidden;border:1px solid #b7b7ad;border-radius:3px;background:#fff;width:var(--pixel-size,56px);height:var(--pixel-size,56px);image-rendering:pixelated}.pixel-dot{min-width:0;min-height:0;border:0;border-radius:0;padding:0;cursor:inherit}.pixel-dot.editor{cursor:pointer;border:1px solid rgba(255,255,255,.22)}.avatar-profile-row{display:flex;align-items:center;gap:12px;margin:10px 0}.avatar-palette{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0}.palette-swatch{width:32px;height:32px;padding:0;border-radius:5px;border:2px solid #777}.palette-swatch.selected{outline:3px solid #355942;outline-offset:2px}.pixel-editor{display:grid;grid-template-columns:repeat(8,minmax(18px,1fr));gap:2px;width:min(100%,280px);margin:10px 0}.pixel-editor button{aspect-ratio:1;padding:0;border-radius:2px;border:1px solid rgba(32,35,31,.16);min-width:0}.msg-head{display:flex;align-items:center;gap:8px;margin-bottom:5px}.msg-head .who{margin:0}.account-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.account-actions button{flex:1 1 100px}.member-row{border-bottom:1px solid var(--line);padding:11px 0}.member-row:last-child{border-bottom:0}.member-main{display:flex;align-items:center;gap:9px}.member-info{flex:1;min-width:0;overflow-wrap:anywhere}.member-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.member-actions button{padding:7px 9px;font-size:13px}.mod-status{font:12px Arial,sans-serif;color:var(--muted);margin-top:3px}.danger-button{border-color:#7e2e2e;color:#7e2e2e}.account-email{font:13px Arial,sans-serif;color:var(--muted);overflow-wrap:anywhere}
 @media(max-width:850px){.layout{display:block}.sidecol{min-width:0}.messages{height:255px}.top{padding:13px 16px}.gamecard{flex-basis:40%}}
 @media(max-width:420px){body{font-size:16px}.gamecard{flex-basis:100%}.compose{flex-wrap:wrap}.compose input{flex-basis:100%}.hero h1{font-size:29px}.roombar select{max-width:none}.cell{height:58px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
@@ -20,26 +21,37 @@
 <body>
 <header class="top"><div><div class="brand">📚 Kindle <span>Club Arcade</span></div><div class="tag">Chat rooms, small games, good company.</div></div><div class="toolbar"><span class="pill">Kindle-friendly</span><span class="status offline" id="connectionStatus">Local demo mode</span></div></header>
 <main class="wrap">
-<section class="hero"><h1>Choose a room. Find your people. Play a round.</h1><p>A lightweight hangout for Kindle and tablet browsers. Guest profiles, live chat, multiplayer Tic-Tac-Toe, quick mini-games, and a wins leaderboard.</p></section>
-<div class="warnbox" id="setupBanner">You're in local demo mode. Chat and mini-games work on this device. To connect different Kindles, follow <strong>SETUP.md</strong> and add your Firebase settings to this file.</div>
+<section class="hero"><h1>Choose a room. Find your people. Play a round.</h1><p>A lightweight hangout for Kindle and tablet browsers. Accounts, pixel-art profiles, live chat, multiplayer games, and member moderation.</p></section>
+<div class="warnbox" id="setupBanner">Local demo mode: the mini-games work on this device. Shared chat, accounts, multiplayer, and moderation need a Firebase project, its web-app settings in <strong>index.html</strong>, and the rules from <strong>firebase-rules.json</strong> published in Firebase Console. The setup guide explains each step.</div>
 <div class="layout">
 <div class="maincol">
 <section class="panel"><div class="panelhead"><h2>💬 Chat rooms</h2><div class="roombar"><label for="roomSelect">Room</label><select id="roomSelect"><option value="lobby">🏡 Main Lobby</option><option value="book-lounge">📚 Book Lounge</option><option value="game-zone">🎮 Game Zone</option><option value="quiet-corner">🌿 Quiet Corner</option></select></div></div>
 <div class="messages" id="messages" aria-live="polite"><div class="msg"><div class="who">Kindle Club</div>Welcome! Pick a room and say hi.</div></div>
 <form class="compose" id="chatForm"><input id="chatInput" maxlength="240" placeholder="Write a friendly message…" aria-label="Chat message" required><button type="submit">Send</button></form>
-<div class="notice" id="chatNotice">Demo messages are saved only in this browser. When Firebase is configured, messages sync between signed-in guest sessions in real time.</div></section>
+<div class="notice" id="chatNotice">Create an account and sign in for live chat, synced pixel-art profiles, and moderation.</div></section>
 <section class="panel"><div class="panelhead"><h2>🎮 Game arcade</h2><span class="status" id="gameRoomStatus">Match room: Main Lobby</span></div><div class="inside"><div class="gamegrid">
 <div class="gamecard"><h3>⭕ Multiplayer Tic-Tac-Toe</h3><p>Join the selected room's board and take turns online.</p><button type="button" id="joinMatchBtn">Join / create match</button></div>
 <div class="gamecard"><h3>🔤 Word Scramble</h3><p>Unscramble a bookish word.</p><button type="button" id="wordBtn">Play Word Scramble</button></div>
 <div class="gamecard"><h3>🧠 Memory Match</h3><p>Find six pairs on this device.</p><button type="button" id="memoryBtn">Play Memory Match</button></div>
 <div class="gamecard"><h3>🔢 Number Guess</h3><p>Guess a secret number from 1 to 20.</p><button type="button" id="guessBtn">Play Number Guess</button></div>
-</div><div class="gamearea" id="gameArea" aria-live="polite"><strong>Pick a game to get started.</strong><p class="tiny">Online multiplayer requires Firebase setup. Mini-games work locally without it.</p></div></div></section>
+</div><div class="gamearea" id="gameArea" aria-live="polite"><strong>Pick a game to get started.</strong><p class="tiny">Tic-Tac-Toe has local pass-and-play so you can try it now. Online play across different devices needs Firebase setup.</p></div></div></section>
 </div>
 <aside class="sidecol">
-<section class="panel"><div class="panelhead"><h2>👤 Your guest profile</h2></div><div class="inside"><form id="profileForm"><label for="nickname"><strong>Nickname</strong></label><div class="inline" style="margin-top:7px"><input id="nickname" maxlength="24" autocomplete="nickname" placeholder="Choose a nickname" required><button type="submit">Save</button></div><p class="tiny">Please use a nickname, not your real name, school, address, or other private details.</p></form><div id="profileStatus" class="status">Profile is saved in this browser.</div></div></section>
-<section class="panel"><div class="panelhead"><h2>🏆 Leaderboard</h2></div><div class="inside"><p class="tiny">Multiplayer Tic-Tac-Toe wins. Scores appear here when online mode is connected.</p><div id="leaderboard"><div class="empty">Configure Firebase to share scores with the club.</div></div></div></section>
+<section class="panel"><div class="panelhead"><h2>👤 Account & profile</h2></div><div class="inside">
+<form id="accountForm" onsubmit="return false"><label for="accountEmail"><strong>Email</strong></label><input id="accountEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
+<label for="accountPassword" style="display:block;margin-top:9px"><strong>Password</strong></label><input id="accountPassword" type="password" autocomplete="current-password" minlength="8" placeholder="At least 8 characters" required>
+<div class="account-actions"><button type="button" id="signInBtn">Sign in</button><button type="button" id="createAccountBtn">Create account</button></div>
+<div class="account-actions"><button type="button" id="resetPasswordBtn">Forgot password?</button><button type="button" id="signOutBtn" hidden>Sign out</button></div>
+<p id="accountNotice" class="tiny">Online accounts need the Firebase setup in SETUP.md. Local profile and games still work here.</p></form>
+<hr class="separator"><form id="profileForm"><label for="nickname"><strong>Nickname</strong></label><div class="inline" style="margin-top:7px"><input id="nickname" maxlength="24" autocomplete="nickname" placeholder="Choose a nickname" required><button type="submit">Save profile</button></div>
+<p class="tiny">Use a nickname, not your real name, school, address, or other private details.</p>
+<strong>Pixel-art profile picture</strong><div class="avatar-profile-row"><div id="avatarPreview" aria-label="Your pixel art avatar"></div><span class="tiny">Tap a square below to draw. Choose a colour first.</span></div><div id="avatarPalette" class="avatar-palette" aria-label="Avatar colours"></div><div id="avatarEditor" class="pixel-editor" aria-label="Edit your 8 by 8 pixel avatar"></div>
+<div class="account-actions"><button type="button" id="randomAvatarBtn">New pattern</button><button type="button" id="clearAvatarBtn">Clear picture</button></div></form>
+<div id="profileStatus" class="status">Profile is saved in this browser.</div></div></section>
+<section class="panel"><div class="panelhead"><h2>🏆 Leaderboard</h2></div><div class="inside"><p class="tiny">Multiplayer Tic-Tac-Toe wins. The shared leaderboard needs signed-in accounts and Firebase setup.</p><div id="leaderboard"><div class="empty">Configure Firebase to share scores with the club.</div></div></div></section>
 <section class="panel"><div class="panelhead"><h2>📌 Club noticeboard</h2></div><div class="inside"><p><strong>Today's prompt</strong></p><p>Which fictional world would you visit for one afternoon?</p><button type="button" id="promptBtn">Share prompt in chat</button><hr class="separator"><p><strong>Kindle tips</strong></p><ul class="tiny"><li>Landscape mode can give games more room.</li><li>Refresh if the browser gets stuck.</li><li>Be kind, and don't share private information.</li></ul></div></section>
-<section class="panel"><div class="panelhead"><h2>🛠️ Site controls</h2></div><div class="inside"><p class="tiny">You can update the words, room names, colours, and games by editing <strong>index.html</strong>. See <strong>SETUP.md</strong> to publish updates.</p><button type="button" id="clearBtn">Clear this device's demo chat</button></div></section>
+<section class="panel" id="moderationPanel" hidden><div class="panelhead"><h2>🛡️ Moderation</h2><span class="status" id="modRoleLabel">Staff only</span></div><div class="inside"><p id="modHelp" class="tiny">Promote trusted club members, apply timeouts, or ban an account. The site owner cannot be banned or timed out.</p><div id="memberList"><div class="empty">Moderator tools appear for approved staff accounts only.</div></div></div></section>
+<section class="panel"><div class="panelhead"><h2>🔒 Site ownership</h2></div><div class="inside"><p class="tiny">Only the site owner can edit the website's code through GitHub. There is no in-site button for visitors to update the website. Moderators can only moderate club members.</p><button type="button" id="clearBtn">Clear this device's demo chat</button></div></section>
 </aside></div>
 <footer class="footer">Kindle Club Arcade · A small, friendly place to play · No downloads needed</footer>
 </main>
@@ -67,13 +79,32 @@ var roomId = "lobby";
 var nickname = localStorage.getItem("kc_name") || ("Reader" + (10 + Math.floor(Math.random()*90)));
 var user = null;
 var db = null;
+var auth = null;
+var firebaseReady = false;
 var onlineReady = false;
 var messageQuery = null;
 var gameRef = null;
 var leaderboardQuery = null;
 var currentGame = null;
+var localTicGame = null;
 var gameArea = $("gameArea");
 var localChats = {};
+var isOwner = false;
+var isMod = false;
+var ownBan = null;
+var ownTimeout = null;
+var selectedPixelColor = 1;
+var pixelColors = ["#f4eee2","#222222","#ef8354","#4f7cac","#80b192","#f2cc8f","#b388eb","#ffffff"];
+var avatarPattern = normalizeAvatar(localStorage.getItem("kc_avatar") || "");
+var ownModRefs = [];
+var dashboardRefs = [];
+var dashboardAttached = false;
+var memberProfiles = {};
+var memberRoles = {};
+var memberBans = {};
+var memberTimeouts = {};
+var memberAdmins = {};
+var timeoutTimer = null;
 var words = ["LIBRARY","DRAGON","PAPERBACK","MYSTERY","CHAPTER","ADVENTURE","BOOKMARK","GALAXY","CASTLE","STORY"];
 
 function setStatus(text, mode){
@@ -81,6 +112,36 @@ function setStatus(text, mode){
   $("connectionStatus").className = "status " + (mode || "");
 }
 function escText(node, text){ node.textContent = text == null ? "" : String(text); }
+function normalizeAvatar(value){
+  var s=String(value||"");
+  return /^[0-7]{64}$/.test(s) ? s : "0011100001233210012332100111110011111100011111000011100000011000";
+}
+function makePixelAvatar(pattern,size){
+  var box=document.createElement("div"), pat=normalizeAvatar(pattern), i, dot;
+  box.className="pixel-avatar"; box.style.setProperty("--pixel-size",(size||42)+"px"); box.setAttribute("aria-label","Pixel art profile picture");
+  for(i=0;i<64;i++){dot=document.createElement("span");dot.className="pixel-dot";dot.style.backgroundColor=pixelColors[Number(pat.charAt(i))]||pixelColors[0];box.appendChild(dot);}
+  return box;
+}
+function drawPixelAvatarEditor(){
+  var preview=$("avatarPreview"),palette=$("avatarPalette"),editor=$("avatarEditor"),i,sw,cell;
+  while(preview.firstChild)preview.removeChild(preview.firstChild); preview.appendChild(makePixelAvatar(avatarPattern,72));
+  while(palette.firstChild)palette.removeChild(palette.firstChild);
+  for(i=0;i<pixelColors.length;i++){sw=document.createElement("button");sw.type="button";sw.className="palette-swatch"+(i===selectedPixelColor?" selected":"");sw.style.backgroundColor=pixelColors[i];sw.setAttribute("aria-label","Choose avatar colour "+(i+1));(function(color){sw.onclick=function(){selectedPixelColor=color;drawPixelAvatarEditor();};})(i);palette.appendChild(sw);}
+  while(editor.firstChild)editor.removeChild(editor.firstChild);
+  for(i=0;i<64;i++){cell=document.createElement("button");cell.type="button";cell.style.backgroundColor=pixelColors[Number(avatarPattern.charAt(i))]||pixelColors[0];cell.setAttribute("aria-label","Pixel "+(i+1));(function(index){cell.onclick=function(){avatarPattern=avatarPattern.substring(0,index)+String(selectedPixelColor)+avatarPattern.substring(index+1);localStorage.setItem("kc_avatar",avatarPattern);drawPixelAvatarEditor();};})(i);editor.appendChild(cell);}
+}
+function randomAvatar(){
+  var rows=["00000000","00111000","01222100","01232100","01242100","00111000","00011000","00111100"],p="",i,j,seed=1+Math.floor(Math.random()*7);
+  for(i=0;i<8;i++)for(j=0;j<8;j++){var c=Number(rows[i].charAt(j));p+=c===0?(Math.random()<.12?String(seed):"0"):String((c+seed)%8);}
+  avatarPattern=normalizeAvatar(p);localStorage.setItem("kc_avatar",avatarPattern);drawPixelAvatarEditor();
+}
+function canUseClub(){if(!onlineReady||!user)return true;if(ownBan)return false;if(ownTimeout&&Number(ownTimeout.until)>Date.now())return false;return true;}
+function updateChatControls(){
+  var blocked=onlineReady&&!canUseClub(); $("chatInput").disabled=blocked; $("chatForm").querySelector("button").disabled=blocked;
+  if(blocked){$("chatNotice").textContent=ownBan?"This account is banned from the club. Contact the site owner if you think this is a mistake.":"This account is timed out until "+new Date(Number(ownTimeout.until)).toLocaleString()+".";}
+  else if(onlineReady&&user){$("chatNotice").textContent="Live room: messages are shared with signed-in club members.";}
+  if(timeoutTimer){window.clearTimeout(timeoutTimer);timeoutTimer=null;} if(onlineReady&&ownTimeout&&Number(ownTimeout.until)>Date.now())timeoutTimer=window.setTimeout(updateChatControls,Math.min(Number(ownTimeout.until)-Date.now()+500,2147483000));
+}
 function getLocalChat(id){
   if(localChats[id]) return localChats[id];
   try { localChats[id] = JSON.parse(localStorage.getItem("kc_chat_"+id) || (id === "lobby" ? localStorage.getItem("kc_chat") : "[]") || "[]"); }
@@ -97,12 +158,13 @@ function drawMessages(items){
     var text = document.createElement("div"); text.textContent = rooms[roomId].prompt;
     empty.appendChild(who); empty.appendChild(text); box.appendChild(empty); return;
   }
-  var i, m, d, w, t, tm;
+  var i, m, d, head, av, w, t, tm;
   for(i=0;i<items.length;i++){
     m = items[i]; d = document.createElement("div"); d.className = "msg" + (m.name === nickname ? " mine" : "");
-    w = document.createElement("div"); w.className = "who"; w.textContent = m.name || "Reader";
+    head=document.createElement("div"); head.className="msg-head"; av=makePixelAvatar(m.avatar,30); head.appendChild(av);
+    w = document.createElement("div"); w.className = "who"; w.textContent = m.name || "Reader"; head.appendChild(w);
     t = document.createElement("div"); t.textContent = m.text || "";
-    d.appendChild(w); d.appendChild(t);
+    d.appendChild(head); d.appendChild(t);
     if(m.createdAt || m.at){ tm = document.createElement("div"); tm.className = "when"; try { tm.textContent = new Date(m.createdAt || m.at).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}); } catch(e){} if(tm.textContent) d.appendChild(tm); }
     box.appendChild(d);
   }
@@ -120,16 +182,17 @@ function attachChat(){
     }, function(err){
       $("chatNotice").textContent = "Couldn't load online chat: " + err.message + ". Check your Firebase rules.";
     });
-    $("chatNotice").textContent = "Live room: messages are shared with other people in this room.";
+    updateChatControls();
   } else {
     renderLocalMessages();
     $("chatNotice").textContent = "Local demo: messages only appear in this browser. Set up Firebase to chat across devices.";
   }
 }
 function addMessage(text){
-  var msg = {name:nickname, text:text, at:Date.now()};
+  if(onlineReady&&!canUseClub()){updateChatControls();return;}
+  var msg = {uid:user&&user.uid?user.uid:"local",name:nickname,text:text,avatar:avatarPattern,at:Date.now()};
   if(onlineReady && db && user){
-    db.ref("rooms/"+roomId+"/messages").push({uid:user.uid,name:nickname,text:text,createdAt:firebase.database.ServerValue.TIMESTAMP}).catch(function(err){ alert("Message couldn't be sent. Check the Firebase setup and rules. " + err.message); });
+    db.ref("rooms/"+roomId+"/messages").push({uid:user.uid,name:nickname,text:text,avatar:avatarPattern,createdAt:firebase.database.ServerValue.TIMESTAMP}).catch(function(err){ alert("Message couldn't be sent. Check the Firebase setup and rules. " + err.message); });
   } else {
     var chat = getLocalChat(roomId); chat.push(msg); if(chat.length>80) chat = chat.slice(chat.length-80); localChats[roomId] = chat;
     localStorage.setItem("kc_chat_"+roomId, JSON.stringify(chat));
@@ -141,41 +204,147 @@ $("chatForm").addEventListener("submit", function(e){ e.preventDefault(); var te
 function saveProfile(){
   var val = $("nickname").value.replace(/[<>]/g, "").replace(/\s+/g," ").trim().slice(0,24);
   if(!val){ alert("Choose a nickname first."); return; }
-  nickname = val; localStorage.setItem("kc_name", nickname); $("nickname").value = nickname;
-  $("profileStatus").textContent = "Profile saved as " + nickname + ".";
-  if(onlineReady && db && user){
-    db.ref("profiles/"+user.uid).set({name:nickname, updatedAt:firebase.database.ServerValue.TIMESTAMP}).catch(function(err){ $("profileStatus").textContent = "Profile is local for now: " + err.message; });
-    db.ref("leaderboard/"+user.uid).transaction(function(old){ old = old || {wins:0,lastScoredMatch:""}; old.name = nickname; if(typeof old.wins !== "number") old.wins = 0; return old; });
+  nickname=val; avatarPattern=normalizeAvatar(avatarPattern); localStorage.setItem("kc_name",nickname); localStorage.setItem("kc_avatar",avatarPattern); $("nickname").value=nickname;
+  $("profileStatus").textContent=onlineReady?"Profile saved to your account.":"Profile saved in this browser. Sign in after Firebase is configured to sync it.";
+  drawPixelAvatarEditor();
+  if(onlineReady&&db&&user){
+    db.ref("profiles/"+user.uid).update({name:nickname,avatar:avatarPattern,updatedAt:firebase.database.ServerValue.TIMESTAMP}).catch(function(err){$("profileStatus").textContent="Profile couldn't sync: "+err.message;});
+    db.ref("leaderboard/"+user.uid).transaction(function(old){old=old||{wins:0,lastScoredMatch:""};old.name=nickname;if(typeof old.wins!=="number")old.wins=0;return old;});
   }
-  if(!onlineReady) renderLocalMessages();
+  if(!onlineReady)renderLocalMessages();
 }
-$("profileForm").addEventListener("submit", function(e){ e.preventDefault(); saveProfile(); });
-$("nickname").value = nickname;
+$("profileForm").addEventListener("submit",function(e){e.preventDefault();saveProfile();});
+$("nickname").value=nickname;
+$("randomAvatarBtn").onclick=randomAvatar;
+$("clearAvatarBtn").onclick=function(){avatarPattern="0".repeat(64);localStorage.setItem("kc_avatar",avatarPattern);drawPixelAvatarEditor();};
+drawPixelAvatarEditor();
+
+function setAccountNotice(text,error){$("accountNotice").textContent=text;$("accountNotice").className=error?"tiny status offline":"tiny";}
+function updateAccountUI(){
+  var signed=!!(firebaseReady&&user);
+  $("accountEmail").disabled=signed||!firebaseReady; $("accountPassword").disabled=signed||!firebaseReady;
+  $("signInBtn").disabled=!firebaseReady; $("createAccountBtn").disabled=!firebaseReady; $("resetPasswordBtn").disabled=!firebaseReady;
+  $("signInBtn").hidden=signed; $("createAccountBtn").hidden=signed; $("resetPasswordBtn").hidden=signed; $("signOutBtn").hidden=!signed;
+  if(!firebaseReady)setAccountNotice("Online accounts need Firebase setup. See SETUP.md. Local games and a local profile still work.");
+  else if(signed)setAccountNotice("Signed in as "+(user.email||"your account")+". Your profile and moderation status sync online.");
+  else setAccountNotice("Create an account or sign in to use live chat, shared profiles, moderation, and multiplayer games.");
+}
+function authErrorMessage(err){
+  var code=err&&err.code||"";
+  if(code.indexOf("email-already-in-use")>=0)return "That email already has an account. Try signing in.";
+  if(code.indexOf("invalid-email")>=0)return "Enter a valid email address.";
+  if(code.indexOf("weak-password")>=0)return "Choose a stronger password with at least 8 characters.";
+  if(code.indexOf("user-not-found")>=0||code.indexOf("invalid-credential")>=0||code.indexOf("wrong-password")>=0)return "Email or password didn't match. Check them and try again.";
+  if(code.indexOf("operation-not-allowed")>=0)return "Email/password sign-in is not enabled in Firebase Authentication yet. See SETUP.md.";
+  return (err&&err.message)||"Something went wrong. Please try again.";
+}
+function signInAccount(){
+  if(!firebaseReady||!auth){setAccountNotice("Firebase isn't configured yet. See SETUP.md.",true);return;}
+  var email=$("accountEmail").value.trim(),password=$("accountPassword").value;
+  if(!email||!password){setAccountNotice("Enter your email and password first.",true);return;}
+  auth.signInWithEmailAndPassword(email,password).then(function(){$("accountPassword").value="";}).catch(function(err){setAccountNotice(authErrorMessage(err),true);});
+}
+function createAccount(){
+  if(!firebaseReady||!auth){setAccountNotice("Firebase isn't configured yet. See SETUP.md.",true);return;}
+  var email=$("accountEmail").value.trim(),password=$("accountPassword").value;
+  if(!email||!password){setAccountNotice("Enter an email and password first.",true);return;}
+  if(password.length<8){setAccountNotice("Choose a password with at least 8 characters.",true);return;}
+  auth.createUserWithEmailAndPassword(email,password).then(function(){$("accountPassword").value="";}).catch(function(err){setAccountNotice(authErrorMessage(err),true);});
+}
+$("signInBtn").onclick=signInAccount;
+$("createAccountBtn").onclick=createAccount;
+$("resetPasswordBtn").onclick=function(){
+  var email=$("accountEmail").value.trim();
+  if(!firebaseReady||!auth){setAccountNotice("Firebase isn't configured yet.",true);return;}
+  if(!email){setAccountNotice("Enter your email above, then choose Forgot password.",true);return;}
+  auth.sendPasswordResetEmail(email).then(function(){setAccountNotice("Password-reset email sent if that account exists. Check your inbox.");}).catch(function(err){setAccountNotice(authErrorMessage(err),true);});
+};
+$("signOutBtn").onclick=function(){if(auth)auth.signOut().catch(function(err){setAccountNotice(authErrorMessage(err),true);});};
+
+function stopRefs(refs){while(refs.length){var r=refs.pop();try{r.off();}catch(e){}}}
+function detachModeratorDashboard(){stopRefs(dashboardRefs);dashboardAttached=false;memberProfiles={};memberRoles={};memberBans={};memberTimeouts={};memberAdmins={};}
+function detachModeration(){stopRefs(ownModRefs);detachModeratorDashboard();ownBan=null;ownTimeout=null;isOwner=false;isMod=false;$("moderationPanel").hidden=true;updateChatControls();}
+function subscribeValue(ref,refs,handler){refs.push(ref);ref.on("value",handler,function(err){$("modHelp").textContent="Moderation data unavailable: "+(err.message||"permission denied")+". Check Firebase security rules.";});}
+function attachModeration(){
+  detachModeration(); if(!onlineReady||!db||!user){updateChatControls();return;}
+  var uid=user.uid;
+  subscribeValue(db.ref("admins/"+uid),ownModRefs,function(s){isOwner=s.val()===true;refreshStaffUI();});
+  subscribeValue(db.ref("roles/"+uid+"/mod"),ownModRefs,function(s){isMod=s.val()===true||isOwner;refreshStaffUI();});
+  subscribeValue(db.ref("moderation/bans/"+uid),ownModRefs,function(s){ownBan=s.val();updateChatControls();});
+  subscribeValue(db.ref("moderation/timeouts/"+uid),ownModRefs,function(s){ownTimeout=s.val();updateChatControls();});
+}
+function refreshStaffUI(){
+  if(isOwner)isMod=true;
+  $("moderationPanel").hidden=!(onlineReady&&(isOwner||isMod));
+  $("modRoleLabel").textContent=isOwner?"Site owner":"Moderator";
+  if(isOwner||isMod)attachModeratorDashboard();else detachModeratorDashboard();
+}
+function attachModeratorDashboard(){
+  if(dashboardAttached||!onlineReady||!db)return; dashboardAttached=true;
+  subscribeValue(db.ref("profiles").limitToLast(100),dashboardRefs,function(s){memberProfiles=s.val()||{};renderModerationDashboard();});
+  subscribeValue(db.ref("roles"),dashboardRefs,function(s){memberRoles=s.val()||{};renderModerationDashboard();});
+  subscribeValue(db.ref("admins"),dashboardRefs,function(s){memberAdmins=s.val()||{};renderModerationDashboard();});
+  subscribeValue(db.ref("moderation/bans"),dashboardRefs,function(s){memberBans=s.val()||{};renderModerationDashboard();});
+  subscribeValue(db.ref("moderation/timeouts"),dashboardRefs,function(s){memberTimeouts=s.val()||{};renderModerationDashboard();});
+}
+function safeButton(label,handler,danger){var b=document.createElement("button");b.type="button";b.textContent=label;if(danger)b.className="danger-button";b.onclick=handler;return b;}
+function renderModerationDashboard(){
+  if(!onlineReady||!(isOwner||isMod)){$("moderationPanel").hidden=true;return;}
+  var root=$("memberList");while(root.firstChild)root.removeChild(root.firstChild);
+  var ids=Object.keys(memberProfiles||{}).sort(function(a,b){return String((memberProfiles[a]||{}).name||"").localeCompare(String((memberProfiles[b]||{}).name||""));});
+  if(!ids.length){var emp=document.createElement("div");emp.className="empty";emp.textContent="No registered members yet. Accounts appear here after someone saves a profile.";root.appendChild(emp);return;}
+  ids.forEach(function(uid){
+    var profile=memberProfiles[uid]||{},targetOwner=memberAdmins[uid]===true,targetMod=!!(memberRoles[uid]&&memberRoles[uid].mod===true),ban=memberBans[uid],timeout=memberTimeouts[uid],row=document.createElement("div"),main=document.createElement("div"),av,info=document.createElement("div"),title=document.createElement("strong"),sub=document.createElement("div"),actions=document.createElement("div");
+    row.className="member-row";main.className="member-main";av=makePixelAvatar(profile.avatar,42);info.className="member-info";title.textContent=(profile.name||"Reader")+(user&&uid===user.uid?" (you)":"");info.appendChild(title);sub.className="mod-status";sub.textContent=targetOwner?"Owner account — protected":(targetMod?"Moderator":"Member");info.appendChild(sub);main.appendChild(av);main.appendChild(info);row.appendChild(main);actions.className="member-actions";
+    if(ban){var bs=document.createElement("div");bs.className="mod-status";bs.textContent="Banned: "+(ban.reason||"No reason provided");row.appendChild(bs);}
+    else if(timeout&&Number(timeout.until)>Date.now()){var ts=document.createElement("div");ts.className="mod-status";ts.textContent="Timed out until "+new Date(Number(timeout.until)).toLocaleString();row.appendChild(ts);}
+    if(isOwner&&uid!==user.uid&&!targetOwner)actions.appendChild(safeButton(targetMod?"Remove mod":"Make moderator",function(){setModerator(uid,profile.name||"Reader",!targetMod);},false));
+    if(!targetOwner&&uid!==user.uid&&(isOwner||(isMod&&!targetMod))){
+      if(ban)actions.appendChild(safeButton("Unban",function(){setModeration(uid,profile.name||"Reader","unban",0);},false));else actions.appendChild(safeButton("Ban",function(){setModeration(uid,profile.name||"Reader","ban",0);},true));
+      actions.appendChild(safeButton("Timeout 10m",function(){setModeration(uid,profile.name||"Reader","timeout",10);},false));
+      actions.appendChild(safeButton("Timeout 1h",function(){setModeration(uid,profile.name||"Reader","timeout",60);},false));
+      if(timeout)actions.appendChild(safeButton("Clear timeout",function(){setModeration(uid,profile.name||"Reader","untimeout",0);},false));
+    }
+    if(actions.childNodes.length)row.appendChild(actions);root.appendChild(row);
+  });
+  $("modHelp").textContent=isOwner?"You are the site owner. Promote trusted members to moderators. Moderators cannot target you or other moderators.":"Moderator tools: ban or time out members. You cannot ban or time out the site owner or another moderator.";
+}
+function setModerator(uid,name,makeMod){
+  if(!isOwner||!onlineReady||!user)return;
+  var target=db.ref("roles/"+uid);
+  (makeMod?target.set({mod:true}):target.remove()).then(function(){$("modHelp").textContent=makeMod?name+" is now a moderator.":name+" is no longer a moderator.";}).catch(function(err){alert("Couldn't change moderator role. Make sure the site owner UID is added to /admins in Firebase. "+err.message);});
+}
+function setModeration(uid,name,action,minutes){
+  if(!(isOwner||isMod)||!onlineReady||!user||uid===user.uid||memberAdmins[uid]===true)return;
+  if(!isOwner&&memberRoles[uid]&&memberRoles[uid].mod===true){alert("Moderators can't moderate another moderator.");return;}
+  var reason="Club rules moderation action";
+  if(action==="ban"||action==="timeout"){var entered=window.prompt("Reason for "+action+" of "+name+" (keep it short):",reason);if(entered===null)return;reason=String(entered).replace(/\s+/g," ").trim().slice(0,160)||reason;}
+  var path=(action==="ban"||action==="unban")?"moderation/bans/"+uid:"moderation/timeouts/"+uid,ref=db.ref(path),op;
+  if(action==="unban"||action==="untimeout")op=ref.remove();
+  else if(action==="ban")op=ref.set({by:user.uid,reason:reason,createdAt:firebase.database.ServerValue.TIMESTAMP});
+  else op=ref.set({by:user.uid,reason:reason,createdAt:firebase.database.ServerValue.TIMESTAMP,until:Date.now()+minutes*60*1000});
+  op.then(function(){$("modHelp").textContent=action==="ban"?name+" was banned.":action==="timeout"?name+" was timed out for "+minutes+" minutes.":action==="unban"?name+" was unbanned.":name+"'s timeout was cleared.";}).catch(function(err){alert("Moderation action failed. Check that your account is listed under /admins for the owner, and that the latest firebase-rules.json was published in Firebase Console. "+err.message);});
+}
 
 function setupFirebase(){
-  var configured = FIREBASE_CONFIG.apiKey.indexOf("PASTE_") !== 0 && FIREBASE_CONFIG.projectId !== "your-project" && FIREBASE_CONFIG.databaseURL.indexOf("YOUR-PROJECT") < 0 && FIREBASE_CONFIG.appId.indexOf("PASTE_") !== 0;
-  if(!configured || typeof firebase === "undefined" || !firebase.initializeApp){
-    setStatus("Local demo mode", "offline"); attachChat(); return;
+  var configured=FIREBASE_CONFIG.apiKey.indexOf("PASTE_")!==0&&FIREBASE_CONFIG.projectId!=="your-project"&&FIREBASE_CONFIG.databaseURL.indexOf("YOUR-PROJECT")<0&&FIREBASE_CONFIG.appId.indexOf("PASTE_")!==0;
+  if(!configured||typeof firebase==="undefined"||!firebase.initializeApp){
+    firebaseReady=false;onlineReady=false;setStatus("Local demo mode","offline");$("setupBanner").style.display="block";$("setupBanner").textContent="Local demo mode: local mini-games and pass-and-play Tic-Tac-Toe work now. Online accounts, shared chat, remote Tic-Tac-Toe and moderation will work only after you add your Firebase web config to index.html and publish firebase-rules.json in Firebase Console. Follow SETUP.md step by step.";updateAccountUI();attachChat();attachGame();attachLeaderboard();attachModeration();return;
   }
-  try { firebase.initializeApp(FIREBASE_CONFIG); db = firebase.database(); setStatus("Connecting…", ""); }
-  catch(e){ setStatus("Local demo mode", "offline"); attachChat(); return; }
-  firebase.auth().signInAnonymously().then(function(cred){
-    user = cred.user;
-    onlineReady = true;
-    setStatus("Connected · live", "online");
-    $("setupBanner").style.display = "none";
-    $("profileStatus").textContent = "Guest profile connected.";
-    db.ref("profiles/"+user.uid).once("value").then(function(snap){
-      var saved = snap.val();
-      if(saved && saved.name && !localStorage.getItem("kc_name")){ nickname = saved.name; $("nickname").value = nickname; }
-      saveProfile();
-    }).catch(function(){});
-    attachChat(); attachGame(); attachLeaderboard();
-  }).catch(function(err){
-    setStatus("Offline · setup needed", "offline");
-    $("setupBanner").style.display = "block";
-    $("setupBanner").textContent = "Live connection did not start (" + err.message + "). Local games still work. Check SETUP.md and your Firebase Authentication settings.";
-    attachChat();
+  try{firebase.initializeApp(FIREBASE_CONFIG);db=firebase.database();auth=firebase.auth();firebaseReady=true;setStatus("Sign in to connect","offline");}
+  catch(e){firebaseReady=false;setStatus("Local demo mode","offline");updateAccountUI();attachChat();return;}
+  updateAccountUI();$("setupBanner").style.display="block";$("setupBanner").textContent="Create an account or sign in below to use live rooms. The site owner must also complete the one-time admin setup in SETUP.md.";
+  auth.onAuthStateChanged(function(authUser){
+    detachModeration();user=authUser||null;onlineReady=!!user;updateAccountUI();
+    if(!user){setStatus("Sign in to connect","offline");$("setupBanner").style.display="block";attachChat();attachGame();attachLeaderboard();attachModeration();return;}
+    var uid=user.uid;setStatus("Loading account…","");
+    db.ref("profiles/"+uid).once("value").then(function(snap){
+      if(!user||user.uid!==uid)return;var saved=snap.val();
+      if(saved&&saved.name){nickname=String(saved.name).slice(0,24);$("nickname").value=nickname;}
+      if(saved&&saved.avatar){avatarPattern=normalizeAvatar(saved.avatar);localStorage.setItem("kc_avatar",avatarPattern);}
+      if(saved&&saved.name)localStorage.setItem("kc_name",nickname);drawPixelAvatarEditor();setStatus("Connected · live","online");$("setupBanner").style.display="none";$("profileStatus").textContent="Account profile connected.";
+      if(!saved||!saved.name||!saved.avatar)saveProfile();attachChat();attachGame();attachLeaderboard();attachModeration();updateAccountUI();
+    }).catch(function(err){setStatus("Account setup needed","offline");$("setupBanner").style.display="block";$("setupBanner").textContent="Signed in, but profile data could not load. Check the published Firebase rules. "+err.message;attachChat();attachGame();attachLeaderboard();attachModeration();});
   });
 }
 
@@ -193,19 +362,25 @@ $("clearBtn").onclick = function(){
   }
 };
 
-/* ---------- Multiplayer Tic-Tac-Toe ---------- */
+/* ---------- Tic-Tac-Toe: local pass-and-play or live multiplayer ---------- */
 function blankBoard(){ var b=[],i; for(i=0;i<9;i++) b.push(""); return b; }
 function newMatch(){ return {board:blankBoard(),turn:"X",players:{X:user.uid,O:""},playerNames:{X:nickname,O:""},status:"waiting",winner:"",matchId:String(Date.now())+"_"+user.uid.slice(0,6),updatedAt:Date.now()}; }
+function newLocalMatch(){ return {board:blankBoard(),turn:"X",players:{X:"local-player-x",O:"local-player-o"},playerNames:{X:"Player X",O:"Player O"},status:"playing",winner:"",matchId:"local_"+String(Date.now())}; }
 function attachGame(){
   if(gameRef){ gameRef.off("value"); gameRef = null; }
   currentGame = null;
   if(onlineReady && db){
     gameRef = db.ref("games/"+roomId);
-    gameRef.on("value", function(snapshot){ currentGame = snapshot.val(); drawTicTacToe(); checkWinnerScore(); }, function(){ drawTicTacToe(); });
+    gameRef.on("value", function(snapshot){ currentGame = snapshot.val(); drawTicTacToe(); checkWinnerScore(); }, function(err){ drawTicTacToe(); });
   } else { drawTicTacToe(); }
 }
 function joinMatch(){
-  if(!onlineReady || !user){ heading("Multiplayer Tic-Tac-Toe", "<p class='muted'>Connect Firebase first to play with someone on another device. See SETUP.md.</p>"); return; }
+  if(!onlineReady || !user){
+    localTicGame = newLocalMatch();
+    drawTicTacToe();
+    return;
+  }
+  if(!canUseClub()){updateChatControls();heading("Club access restricted", "<p class='muted'>This account is banned or timed out. Contact the site owner if this seems wrong.</p>");return;}
   db.ref("games/"+roomId).transaction(function(old){
     if(!old) return newMatch();
     if(old.status === "waiting" && old.players && old.players.X !== user.uid && !old.players.O){ old.players.O = user.uid; old.playerNames.O = nickname; old.status = "playing"; old.updatedAt = Date.now(); return old; }
@@ -217,12 +392,16 @@ function joinMatch(){
       else if(g.status === "playing"){ $("ticMessage").textContent = "This room already has two players. Try another room."; }
       else if(g.status === "over"){ $("ticMessage").textContent = "That match has finished. Choose New Match to start another."; }
     }
-  }).catch(function(err){ alert("Couldn't join the match. Check the Firebase rules. " + err.message); });
+  }).catch(function(err){ alert("Couldn't join the match. Check your Firebase database URL and publish firebase-rules.json in Firebase Console. " + err.message); });
 }
 function resetMatch(){
-  if(!onlineReady || !user){ joinMatch(); return; }
+  if(!onlineReady || !user){ localTicGame = newLocalMatch(); drawTicTacToe(); return; }
+  if(!canUseClub()){ alert("This account currently cannot play because of a moderation action."); return; }
+  if(currentGame && currentGame.status === "playing" && currentGame.players && currentGame.players.X !== user.uid && currentGame.players.O !== user.uid){
+    alert("Only a player in the current match can reset it."); return;
+  }
   var ref = db.ref("games/"+roomId);
-  ref.set(newMatch()).catch(function(err){ alert("Couldn't start a new match. " + err.message); });
+  ref.set(newMatch()).catch(function(err){ alert("Couldn't start a new match. Check Firebase rules and try again. " + err.message); });
 }
 function hasWin(board, side){
   var lines = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]], i, a;
@@ -230,28 +409,41 @@ function hasWin(board, side){
   return false;
 }
 function drawTicTacToe(){
-  heading("Multiplayer Tic-Tac-Toe", "<p id='ticMessage' class='game-status'></p><div id='onlineBoard' class='board' role='group' aria-label='Tic-Tac-Toe board'></div><div class='inline'><button id='ticJoinAgain' type='button'>Join / create match</button><button id='ticReset' type='button'>New match</button></div><p class='tiny'>A match is shared by everyone in the selected chat room. New Match resets that room's board.</p>");
+  var localMode = !onlineReady;
+  heading(localMode ? "Tic-Tac-Toe · local pass-and-play" : "Multiplayer Tic-Tac-Toe", "<p id='ticMessage' class='game-status'></p><div id='onlineBoard' class='board' role='group' aria-label='Tic-Tac-Toe board'></div><div class='inline'><button id='ticJoinAgain' type='button'>"+(localMode ? "Start local game" : "Join / create match")+"</button><button id='ticReset' type='button'>New match</button></div><p class='tiny' id='ticFootnote'></p>");
   $("ticJoinAgain").onclick = joinMatch; $("ticReset").onclick = resetMatch;
-  var b = $("onlineBoard"), g=currentGame, i, btn, msg=$("ticMessage");
-  if(!onlineReady){ msg.textContent = "Offline demo: connect Firebase to play online."; }
-  else if(!g){ msg.textContent = "No match yet. Tap Join / create match to start as X."; }
-  else if(g.status === "waiting"){ msg.textContent = "Waiting for player O. " + (g.playerNames && g.playerNames.X ? g.playerNames.X : "Player X") + " started this match."; }
+  var b = $("onlineBoard"), g=localMode?localTicGame:currentGame, i, btn, msg=$("ticMessage");
+  if(localMode){
+    if(!g){msg.textContent="Local demo: start a two-player game on this device. This does not connect different Kindles.";$("ticFootnote").textContent="For online play, complete the Firebase setup guide. Both players must open the published site and sign in.";}
+    else if(g.status === "playing"){msg.textContent="Local pass-and-play: "+(g.playerNames[g.turn]||("Player "+g.turn))+"'s turn.";$("ticFootnote").textContent="Take turns on this device. To play across devices, configure Firebase.";}
+    else if(g.status === "over"){msg.textContent=g.winner==="draw"?"It's a draw! Start a new match.":(g.playerNames[g.winner]||("Player "+g.winner))+" wins! Start a new match.";$("ticFootnote").textContent="Local results are not shared on the online leaderboard.";}
+  } else if(!g){ msg.textContent = "No match yet. Tap Join / create match to start as X.";$("ticFootnote").textContent="For a friend to join, both of you need accounts and must select the same chat room."; }
+  else if(g.status === "waiting"){ msg.textContent = "Waiting for player O. " + (g.playerNames && g.playerNames.X ? g.playerNames.X : "Player X") + " started this match.";$("ticFootnote").textContent="Share the published site address with your friend; they should select this same room and join."; }
   else if(g.status === "playing"){
     var who = g.turn === "X" ? (g.playerNames.X || "Player X") : (g.playerNames.O || "Player O");
     var side = g.players && g.players.X === user.uid ? "X" : (g.players && g.players.O === user.uid ? "O" : "spectator");
     msg.textContent = (side === "spectator" ? "You're watching. " : "You play as " + side + ". ") + who + "'s turn.";
+    $("ticFootnote").textContent="Only the active player can mark a square. New Match is for the participants.";
   } else if(g.status === "over"){
     msg.textContent = g.winner === "draw" ? "It's a draw! Start a new match for another round." : ((g.playerNames && g.playerNames[g.winner]) || ("Player "+g.winner)) + " wins! Start a new match for another round.";
+    $("ticFootnote").textContent="Start a new match to play again.";
   }
   for(i=0;i<9;i++){
     btn=document.createElement("button"); btn.type="button"; btn.className="cell"; btn.textContent = g && g.board ? (g.board[i] || "·") : "·"; btn.setAttribute("aria-label", "Square " + (i+1) + ": " + (g && g.board && g.board[i] ? g.board[i] : "empty"));
     (function(index){ btn.onclick=function(){ playCell(index); }; })(i);
-    var active = onlineReady && g && g.status === "playing" && g.board && !g.board[i] && g.players && ((g.turn === "X" && g.players.X === user.uid) || (g.turn === "O" && g.players.O === user.uid));
+    var active = localMode ? !!(g && g.status === "playing" && g.board && !g.board[i]) : !!(onlineReady && g && g.status === "playing" && g.board && !g.board[i] && g.players && ((g.turn === "X" && g.players.X === user.uid) || (g.turn === "O" && g.players.O === user.uid)) && canUseClub());
     btn.disabled = !active; b.appendChild(btn);
   }
 }
 function playCell(index){
-  if(!onlineReady || !user) return;
+  if(!onlineReady || !user){
+    if(!localTicGame || localTicGame.status !== "playing" || localTicGame.board[index]) return;
+    var localSide=localTicGame.turn; localTicGame.board[index]=localSide;
+    if(hasWin(localTicGame.board,localSide)){localTicGame.status="over";localTicGame.winner=localSide;}
+    else{var li,localFull=true;for(li=0;li<9;li++){if(!localTicGame.board[li])localFull=false;}if(localFull){localTicGame.status="over";localTicGame.winner="draw";}else{localTicGame.turn=localSide==="X"?"O":"X";}}
+    drawTicTacToe(); return;
+  }
+  if(!canUseClub())return;
   db.ref("games/"+roomId).transaction(function(g){
     if(!g || g.status !== "playing" || !g.board || g.board[index]) return;
     var side = g.players && g.players.X === user.uid ? "X" : (g.players && g.players.O === user.uid ? "O" : "");
@@ -260,7 +452,7 @@ function playCell(index){
     if(hasWin(g.board, side)){ g.status = "over"; g.winner = side; }
     else { var i, full=true; for(i=0;i<9;i++){ if(!g.board[i]) full=false; } if(full){ g.status="over"; g.winner="draw"; } else { g.turn = side === "X" ? "O" : "X"; } }
     g.updatedAt = Date.now(); return g;
-  }).catch(function(err){ alert("Move not saved. Check Firebase rules. " + err.message); });
+  }).catch(function(err){ alert("Move not saved. Check your Firebase setup and database rules. " + err.message); });
 }
 function checkWinnerScore(){
   if(!onlineReady || !user || !currentGame || currentGame.status !== "over" || currentGame.winner === "draw") return;
@@ -325,3 +517,4 @@ setupFirebase();
 </script>
 </body>
 </html>
+
