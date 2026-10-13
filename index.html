@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f4ee">
+<title>Kindle Club Arcade — chat, rooms & games</title>
+<style>
+:root{--ink:#20231f;--paper:#f5f4ee;--card:#fffef9;--line:#d8d8cd;--accent:#355942;--soft:#e7eee6;--muted:#60685f;--warn:#6b4c14;--warnbg:#fff5d9}
+*{box-sizing:border-box}html{background:var(--paper)}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.45 Georgia,"Times New Roman",serif}button,input,select{font:inherit}button,select{cursor:pointer}button{border:2px solid var(--ink);background:var(--card);color:var(--ink);padding:10px 13px;border-radius:8px;font-weight:bold}button:hover,button:focus{background:var(--soft)}button:focus,input:focus,select:focus{outline:3px solid #9ab49b;outline-offset:2px}button:disabled{cursor:not-allowed;opacity:.55}input,select{min-width:0;width:100%;border:2px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);padding:10px}a{color:var(--accent)}.top{background:var(--card);border-bottom:2px solid var(--line);padding:14px max(16px,calc((100% - 1180px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-size:27px;font-weight:bold;letter-spacing:-.6px}.brand span{color:var(--accent)}.tag{font:14px Arial,sans-serif;color:var(--muted)}.wrap{max-width:1180px;margin:0 auto;padding:0 16px}.hero{padding:21px 0 17px}.hero h1{font-size:clamp(28px,4.3vw,42px);line-height:1.12;margin:0 0 8px}.hero p{color:var(--muted);margin:0;max-width:750px}.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.pill{display:inline-block;border:1px solid var(--line);border-radius:24px;padding:4px 9px;background:var(--soft);font:12px Arial,sans-serif}.status{font:13px Arial,sans-serif;color:var(--muted)}.status.online{color:var(--accent);font-weight:bold}.status.offline{color:var(--warn)}.layout{display:flex;align-items:flex-start;gap:16px}.maincol{flex:1 1 630px;min-width:0}.sidecol{flex:0 1 310px;min-width:255px}.panel{background:var(--card);border:2px solid var(--line);border-radius:12px;overflow:hidden;margin:0 0 16px}.panelhead{padding:13px 15px;border-bottom:2px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.panelhead h2{font-size:21px;margin:0}.inside{padding:15px}.muted{color:var(--muted)}.tiny{font:13px/1.45 Arial,sans-serif;color:var(--muted)}.roombar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.roombar label{font-weight:bold}.roombar select{width:auto;max-width:240px;flex:1}.messages{height:290px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:13px;background:#faf9f4}.msg{max-width:91%;border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:white;overflow-wrap:anywhere}.msg.mine{align-self:flex-end;background:var(--soft);border-color:#bdcbbc}.who{font:bold 12px Arial,sans-serif;color:var(--accent);margin-bottom:3px}.when{font:11px Arial,sans-serif;color:var(--muted);margin-top:4px}.compose{display:flex;align-items:stretch;gap:8px;padding:11px;border-top:2px solid var(--line)}.compose input{flex:1}.notice{font:13px/1.5 Arial,sans-serif;color:var(--muted);padding:0 14px 13px}.gamegrid{display:flex;gap:10px;flex-wrap:wrap}.gamecard{border:2px solid var(--line);border-radius:9px;padding:12px;flex:1 1 175px;min-width:150px}.gamecard h3{margin:0 0 5px;font-size:18px}.gamecard p{font-size:14px;color:var(--muted);margin:0 0 11px}.gamearea{margin-top:16px;border-top:2px dashed var(--line);padding-top:15px;min-height:90px}.board{display:flex;flex-wrap:wrap;gap:5px;width:225px;max-width:100%;margin:12px 0}.cell{width:calc(33.333% - 4px);height:67px;padding:0;font-size:27px}.game-status{font-weight:bold;margin:8px 0}.inline{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.inline input{flex:1 1 120px}.rankrow{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}.rankrow:last-child{border-bottom:0}.rankname{overflow-wrap:anywhere}.score{font-weight:bold;font-variant-numeric:tabular-nums}.empty{color:var(--muted);padding:12px 0}.separator{border:0;border-top:2px solid var(--line);margin:16px 0}.footer{text-align:center;color:var(--muted);font:13px Arial,sans-serif;padding:10px 0 30px}.warnbox{background:var(--warnbg);border:1px solid #e4ce90;border-radius:8px;padding:10px 12px;font:13px/1.5 Arial,sans-serif;color:#5f4719;margin:0 0 15px}.word{font-size:24px;letter-spacing:3px;font-weight:bold;margin:12px 0}.memboard{display:flex;flex-wrap:wrap;gap:7px;max-width:380px}.memcard{flex:1 0 20%;min-width:48px;padding:8px 0;min-height:48px}
+@media(max-width:850px){.layout{display:block}.sidecol{min-width:0}.messages{height:255px}.top{padding:13px 16px}.gamecard{flex-basis:40%}}
+@media(max-width:420px){body{font-size:16px}.gamecard{flex-basis:100%}.compose{flex-wrap:wrap}.compose input{flex-basis:100%}.hero h1{font-size:29px}.roombar select{max-width:none}.cell{height:58px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+<!-- Firebase's compatibility build is intentionally used so the site needs no bundler/build step. -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+</head>
+<body>
+<header class="top"><div><div class="brand">📚 Kindle <span>Club Arcade</span></div><div class="tag">Chat rooms, small games, good company.</div></div><div class="toolbar"><span class="pill">Kindle-friendly</span><span class="status offline" id="connectionStatus">Local demo mode</span></div></header>
+<main class="wrap">
+<section class="hero"><h1>Choose a room. Find your people. Play a round.</h1><p>A lightweight hangout for Kindle and tablet browsers. Guest profiles, live chat, multiplayer Tic-Tac-Toe, quick mini-games, and a wins leaderboard.</p></section>
+<div class="warnbox" id="setupBanner">You're in local demo mode. Chat and mini-games work on this device. To connect different Kindles, follow <strong>SETUP.md</strong> and add your Firebase settings to this file.</div>
+<div class="layout">
+<div class="maincol">
+<section class="panel"><div class="panelhead"><h2>💬 Chat rooms</h2><div class="roombar"><label for="roomSelect">Room</label><select id="roomSelect"><option value="lobby">🏡 Main Lobby</option><option value="book-lounge">📚 Book Lounge</option><option value="game-zone">🎮 Game Zone</option><option value="quiet-corner">🌿 Quiet Corner</option></select></div></div>
+<div class="messages" id="messages" aria-live="polite"><div class="msg"><div class="who">Kindle Club</div>Welcome! Pick a room and say hi.</div></div>
+<form class="compose" id="chatForm"><input id="chatInput" maxlength="240" placeholder="Write a friendly message…" aria-label="Chat message" required><button type="submit">Send</button></form>
+<div class="notice" id="chatNotice">Demo messages are saved only in this browser. When Firebase is configured, messages sync between signed-in guest sessions in real time.</div></section>
+<section class="panel"><div class="panelhead"><h2>🎮 Game arcade</h2><span class="status" id="gameRoomStatus">Match room: Main Lobby</span></div><div class="inside"><div class="gamegrid">
+<div class="gamecard"><h3>⭕ Multiplayer Tic-Tac-Toe</h3><p>Join the selected room's board and take turns online.</p><button type="button" id="joinMatchBtn">Join / create match</button></div>
+<div class="gamecard"><h3>🔤 Word Scramble</h3><p>Unscramble a bookish word.</p><button type="button" id="wordBtn">Play Word Scramble</button></div>
+<div class="gamecard"><h3>🧠 Memory Match</h3><p>Find six pairs on this device.</p><button type="button" id="memoryBtn">Play Memory Match</button></div>
+<div class="gamecard"><h3>🔢 Number Guess</h3><p>Guess a secret number from 1 to 20.</p><button type="button" id="guessBtn">Play Number Guess</button></div>
+</div><div class="gamearea" id="gameArea" aria-live="polite"><strong>Pick a game to get started.</strong><p class="tiny">Online multiplayer requires Firebase setup. Mini-games work locally without it.</p></div></div></section>
+</div>
+<aside class="sidecol">
+<section class="panel"><div class="panelhead"><h2>👤 Your guest profile</h2></div><div class="inside"><form id="profileForm"><label for="nickname"><strong>Nickname</strong></label><div class="inline" style="margin-top:7px"><input id="nickname" maxlength="24" autocomplete="nickname" placeholder="Choose a nickname" required><button type="submit">Save</button></div><p class="tiny">Please use a nickname, not your real name, school, address, or other private details.</p></form><div id="profileStatus" class="status">Profile is saved in this browser.</div></div></section>
+<section class="panel"><div class="panelhead"><h2>🏆 Leaderboard</h2></div><div class="inside"><p class="tiny">Multiplayer Tic-Tac-Toe wins. Scores appear here when online mode is connected.</p><div id="leaderboard"><div class="empty">Configure Firebase to share scores with the club.</div></div></div></section>
+<section class="panel"><div class="panelhead"><h2>📌 Club noticeboard</h2></div><div class="inside"><p><strong>Today's prompt</strong></p><p>Which fictional world would you visit for one afternoon?</p><button type="button" id="promptBtn">Share prompt in chat</button><hr class="separator"><p><strong>Kindle tips</strong></p><ul class="tiny"><li>Landscape mode can give games more room.</li><li>Refresh if the browser gets stuck.</li><li>Be kind, and don't share private information.</li></ul></div></section>
+<section class="panel"><div class="panelhead"><h2>🛠️ Site controls</h2></div><div class="inside"><p class="tiny">You can update the words, room names, colours, and games by editing <strong>index.html</strong>. See <strong>SETUP.md</strong> to publish updates.</p><button type="button" id="clearBtn">Clear this device's demo chat</button></div></section>
+</aside></div>
+<footer class="footer">Kindle Club Arcade · A small, friendly place to play · No downloads needed</footer>
+</main>
+<script>
+/* ==========================================================
+   SETUP: Replace the placeholder values below with your own
+   Firebase Web App config. No private server key goes here.
+   ========================================================== */
+var FIREBASE_CONFIG = {
+  apiKey: "PASTE_YOUR_FIREBASE_API_KEY",
+  authDomain: "your-project.firebaseapp.com",
+  databaseURL: "https://YOUR-PROJECT-default-rtdb.firebaseio.com",
+  projectId: "your-project",
+  appId: "PASTE_YOUR_FIREBASE_APP_ID"
+};
+
+var $ = function(id){ return document.getElementById(id); };
+var rooms = {
+  "lobby": {label:"Main Lobby", prompt:"Welcome to the Main Lobby!"},
+  "book-lounge": {label:"Book Lounge", prompt:"Welcome to the Book Lounge. What are you reading?"},
+  "game-zone": {label:"Game Zone", prompt:"Welcome to the Game Zone. Looking for a match?"},
+  "quiet-corner": {label:"Quiet Corner", prompt:"Welcome to the Quiet Corner. Keep it mellow."}
+};
+var roomId = "lobby";
+var nickname = localStorage.getItem("kc_name") || ("Reader" + (10 + Math.floor(Math.random()*90)));
+var user = null;
+var db = null;
+var onlineReady = false;
+var messageQuery = null;
+var gameRef = null;
+var leaderboardQuery = null;
+var currentGame = null;
+var gameArea = $("gameArea");
+var localChats = {};
+var words = ["LIBRARY","DRAGON","PAPERBACK","MYSTERY","CHAPTER","ADVENTURE","BOOKMARK","GALAXY","CASTLE","STORY"];
+
+function setStatus(text, mode){
+  $("connectionStatus").textContent = text;
+  $("connectionStatus").className = "status " + (mode || "");
+}
+function escText(node, text){ node.textContent = text == null ? "" : String(text); }
+function getLocalChat(id){
+  if(localChats[id]) return localChats[id];
+  try { localChats[id] = JSON.parse(localStorage.getItem("kc_chat_"+id) || (id === "lobby" ? localStorage.getItem("kc_chat") : "[]") || "[]"); }
+  catch(e){ localChats[id] = []; }
+  if(!Array.isArray(localChats[id])) localChats[id] = [];
+  return localChats[id];
+}
+function drawMessages(items){
+  var box = $("messages");
+  while(box.firstChild) box.removeChild(box.firstChild);
+  if(!items || !items.length){
+    var empty = document.createElement("div"); empty.className = "msg";
+    var who = document.createElement("div"); who.className = "who"; who.textContent = "Kindle Club";
+    var text = document.createElement("div"); text.textContent = rooms[roomId].prompt;
+    empty.appendChild(who); empty.appendChild(text); box.appendChild(empty); return;
+  }
+  var i, m, d, w, t, tm;
+  for(i=0;i<items.length;i++){
+    m = items[i]; d = document.createElement("div"); d.className = "msg" + (m.name === nickname ? " mine" : "");
+    w = document.createElement("div"); w.className = "who"; w.textContent = m.name || "Reader";
+    t = document.createElement("div"); t.textContent = m.text || "";
+    d.appendChild(w); d.appendChild(t);
+    if(m.createdAt || m.at){ tm = document.createElement("div"); tm.className = "when"; try { tm.textContent = new Date(m.createdAt || m.at).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}); } catch(e){} if(tm.textContent) d.appendChild(tm); }
+    box.appendChild(d);
+  }
+  box.scrollTop = box.scrollHeight;
+}
+function renderLocalMessages(){ drawMessages(getLocalChat(roomId)); }
+function attachChat(){
+  if(messageQuery){ messageQuery.off("value"); messageQuery = null; }
+  if(onlineReady && db){
+    messageQuery = db.ref("rooms/"+roomId+"/messages").orderByChild("createdAt").limitToLast(60);
+    messageQuery.on("value", function(snapshot){
+      var list = [];
+      snapshot.forEach(function(child){ list.push(child.val()); });
+      drawMessages(list);
+    }, function(err){
+      $("chatNotice").textContent = "Couldn't load online chat: " + err.message + ". Check your Firebase rules.";
+    });
+    $("chatNotice").textContent = "Live room: messages are shared with other people in this room.";
+  } else {
+    renderLocalMessages();
+    $("chatNotice").textContent = "Local demo: messages only appear in this browser. Set up Firebase to chat across devices.";
+  }
+}
+function addMessage(text){
+  var msg = {name:nickname, text:text, at:Date.now()};
+  if(onlineReady && db && user){
+    db.ref("rooms/"+roomId+"/messages").push({uid:user.uid,name:nickname,text:text,createdAt:firebase.database.ServerValue.TIMESTAMP}).catch(function(err){ alert("Message couldn't be sent. Check the Firebase setup and rules. " + err.message); });
+  } else {
+    var chat = getLocalChat(roomId); chat.push(msg); if(chat.length>80) chat = chat.slice(chat.length-80); localChats[roomId] = chat;
+    localStorage.setItem("kc_chat_"+roomId, JSON.stringify(chat));
+    renderLocalMessages();
+  }
+}
+$("chatForm").addEventListener("submit", function(e){ e.preventDefault(); var text = $("chatInput").value.replace(/\s+/g," ").trim(); if(text){ addMessage(text.slice(0,240)); $("chatInput").value=""; } });
+
+function saveProfile(){
+  var val = $("nickname").value.replace(/[<>]/g, "").replace(/\s+/g," ").trim().slice(0,24);
+  if(!val){ alert("Choose a nickname first."); return; }
+  nickname = val; localStorage.setItem("kc_name", nickname); $("nickname").value = nickname;
+  $("profileStatus").textContent = "Profile saved as " + nickname + ".";
+  if(onlineReady && db && user){
+    db.ref("profiles/"+user.uid).set({name:nickname, updatedAt:firebase.database.ServerValue.TIMESTAMP}).catch(function(err){ $("profileStatus").textContent = "Profile is local for now: " + err.message; });
+    db.ref("leaderboard/"+user.uid).transaction(function(old){ old = old || {wins:0,lastScoredMatch:""}; old.name = nickname; if(typeof old.wins !== "number") old.wins = 0; return old; });
+  }
+  if(!onlineReady) renderLocalMessages();
+}
+$("profileForm").addEventListener("submit", function(e){ e.preventDefault(); saveProfile(); });
+$("nickname").value = nickname;
+
+function setupFirebase(){
+  var configured = FIREBASE_CONFIG.apiKey.indexOf("PASTE_") !== 0 && FIREBASE_CONFIG.projectId !== "your-project" && FIREBASE_CONFIG.databaseURL.indexOf("YOUR-PROJECT") < 0 && FIREBASE_CONFIG.appId.indexOf("PASTE_") !== 0;
+  if(!configured || typeof firebase === "undefined" || !firebase.initializeApp){
+    setStatus("Local demo mode", "offline"); attachChat(); return;
+  }
+  try { firebase.initializeApp(FIREBASE_CONFIG); db = firebase.database(); setStatus("Connecting…", ""); }
+  catch(e){ setStatus("Local demo mode", "offline"); attachChat(); return; }
+  firebase.auth().signInAnonymously().then(function(cred){
+    user = cred.user;
+    onlineReady = true;
+    setStatus("Connected · live", "online");
+    $("setupBanner").style.display = "none";
+    $("profileStatus").textContent = "Guest profile connected.";
+    db.ref("profiles/"+user.uid).once("value").then(function(snap){
+      var saved = snap.val();
+      if(saved && saved.name && !localStorage.getItem("kc_name")){ nickname = saved.name; $("nickname").value = nickname; }
+      saveProfile();
+    }).catch(function(){});
+    attachChat(); attachGame(); attachLeaderboard();
+  }).catch(function(err){
+    setStatus("Offline · setup needed", "offline");
+    $("setupBanner").style.display = "block";
+    $("setupBanner").textContent = "Live connection did not start (" + err.message + "). Local games still work. Check SETUP.md and your Firebase Authentication settings.";
+    attachChat();
+  });
+}
+
+$("roomSelect").addEventListener("change", function(){
+  roomId = $("roomSelect").value;
+  $("gameRoomStatus").textContent = "Match room: " + rooms[roomId].label;
+  attachChat(); attachGame();
+});
+$("promptBtn").onclick = function(){ addMessage("📚 Club prompt: Which fictional world would you visit for one afternoon?"); };
+$("clearBtn").onclick = function(){
+  if(confirm("Clear demo messages saved in this browser? Online room history is not deleted.")){
+    localStorage.removeItem("kc_chat_"+roomId); localChats[roomId] = [];
+    if(roomId === "lobby") localStorage.removeItem("kc_chat");
+    if(!onlineReady) renderLocalMessages();
+  }
+};
+
+/* ---------- Multiplayer Tic-Tac-Toe ---------- */
+function blankBoard(){ var b=[],i; for(i=0;i<9;i++) b.push(""); return b; }
+function newMatch(){ return {board:blankBoard(),turn:"X",players:{X:user.uid,O:""},playerNames:{X:nickname,O:""},status:"waiting",winner:"",matchId:String(Date.now())+"_"+user.uid.slice(0,6),updatedAt:Date.now()}; }
+function attachGame(){
+  if(gameRef){ gameRef.off("value"); gameRef = null; }
+  currentGame = null;
+  if(onlineReady && db){
+    gameRef = db.ref("games/"+roomId);
+    gameRef.on("value", function(snapshot){ currentGame = snapshot.val(); drawTicTacToe(); checkWinnerScore(); }, function(){ drawTicTacToe(); });
+  } else { drawTicTacToe(); }
+}
+function joinMatch(){
+  if(!onlineReady || !user){ heading("Multiplayer Tic-Tac-Toe", "<p class='muted'>Connect Firebase first to play with someone on another device. See SETUP.md.</p>"); return; }
+  db.ref("games/"+roomId).transaction(function(old){
+    if(!old) return newMatch();
+    if(old.status === "waiting" && old.players && old.players.X !== user.uid && !old.players.O){ old.players.O = user.uid; old.playerNames.O = nickname; old.status = "playing"; old.updatedAt = Date.now(); return old; }
+    return;
+  }).then(function(result){
+    if(!result.committed && result.snapshot.val()){
+      var g = result.snapshot.val();
+      if(g.players && (g.players.X === user.uid || g.players.O === user.uid)){ drawTicTacToe(); }
+      else if(g.status === "playing"){ $("ticMessage").textContent = "This room already has two players. Try another room."; }
+      else if(g.status === "over"){ $("ticMessage").textContent = "That match has finished. Choose New Match to start another."; }
+    }
+  }).catch(function(err){ alert("Couldn't join the match. Check the Firebase rules. " + err.message); });
+}
+function resetMatch(){
+  if(!onlineReady || !user){ joinMatch(); return; }
+  var ref = db.ref("games/"+roomId);
+  ref.set(newMatch()).catch(function(err){ alert("Couldn't start a new match. " + err.message); });
+}
+function hasWin(board, side){
+  var lines = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]], i, a;
+  for(i=0;i<lines.length;i++){ a=lines[i]; if(board[a[0]]===side && board[a[1]]===side && board[a[2]]===side) return true; }
+  return false;
+}
+function drawTicTacToe(){
+  heading("Multiplayer Tic-Tac-Toe", "<p id='ticMessage' class='game-status'></p><div id='onlineBoard' class='board' role='group' aria-label='Tic-Tac-Toe board'></div><div class='inline'><button id='ticJoinAgain' type='button'>Join / create match</button><button id='ticReset' type='button'>New match</button></div><p class='tiny'>A match is shared by everyone in the selected chat room. New Match resets that room's board.</p>");
+  $("ticJoinAgain").onclick = joinMatch; $("ticReset").onclick = resetMatch;
+  var b = $("onlineBoard"), g=currentGame, i, btn, msg=$("ticMessage");
+  if(!onlineReady){ msg.textContent = "Offline demo: connect Firebase to play online."; }
+  else if(!g){ msg.textContent = "No match yet. Tap Join / create match to start as X."; }
+  else if(g.status === "waiting"){ msg.textContent = "Waiting for player O. " + (g.playerNames && g.playerNames.X ? g.playerNames.X : "Player X") + " started this match."; }
+  else if(g.status === "playing"){
+    var who = g.turn === "X" ? (g.playerNames.X || "Player X") : (g.playerNames.O || "Player O");
+    var side = g.players && g.players.X === user.uid ? "X" : (g.players && g.players.O === user.uid ? "O" : "spectator");
+    msg.textContent = (side === "spectator" ? "You're watching. " : "You play as " + side + ". ") + who + "'s turn.";
+  } else if(g.status === "over"){
+    msg.textContent = g.winner === "draw" ? "It's a draw! Start a new match for another round." : ((g.playerNames && g.playerNames[g.winner]) || ("Player "+g.winner)) + " wins! Start a new match for another round.";
+  }
+  for(i=0;i<9;i++){
+    btn=document.createElement("button"); btn.type="button"; btn.className="cell"; btn.textContent = g && g.board ? (g.board[i] || "·") : "·"; btn.setAttribute("aria-label", "Square " + (i+1) + ": " + (g && g.board && g.board[i] ? g.board[i] : "empty"));
+    (function(index){ btn.onclick=function(){ playCell(index); }; })(i);
+    var active = onlineReady && g && g.status === "playing" && g.board && !g.board[i] && g.players && ((g.turn === "X" && g.players.X === user.uid) || (g.turn === "O" && g.players.O === user.uid));
+    btn.disabled = !active; b.appendChild(btn);
+  }
+}
+function playCell(index){
+  if(!onlineReady || !user) return;
+  db.ref("games/"+roomId).transaction(function(g){
+    if(!g || g.status !== "playing" || !g.board || g.board[index]) return;
+    var side = g.players && g.players.X === user.uid ? "X" : (g.players && g.players.O === user.uid ? "O" : "");
+    if(!side || g.turn !== side) return;
+    g.board[index] = side;
+    if(hasWin(g.board, side)){ g.status = "over"; g.winner = side; }
+    else { var i, full=true; for(i=0;i<9;i++){ if(!g.board[i]) full=false; } if(full){ g.status="over"; g.winner="draw"; } else { g.turn = side === "X" ? "O" : "X"; } }
+    g.updatedAt = Date.now(); return g;
+  }).catch(function(err){ alert("Move not saved. Check Firebase rules. " + err.message); });
+}
+function checkWinnerScore(){
+  if(!onlineReady || !user || !currentGame || currentGame.status !== "over" || currentGame.winner === "draw") return;
+  var winnerUid = currentGame.players && currentGame.players[currentGame.winner];
+  if(winnerUid !== user.uid) return;
+  var matchId = currentGame.matchId;
+  db.ref("leaderboard/"+user.uid).transaction(function(old){
+    old = old || {name:nickname,wins:0,lastScoredMatch:""};
+    if(old.lastScoredMatch === matchId) return old;
+    old.name = nickname; old.wins = (Number(old.wins)||0) + 1; old.lastScoredMatch = matchId; return old;
+  });
+}
+$("joinMatchBtn").onclick = joinMatch;
+
+/* ---------- Leaderboard ---------- */
+function attachLeaderboard(){
+  if(leaderboardQuery){ leaderboardQuery.off("value"); leaderboardQuery = null; }
+  if(!onlineReady || !db){ $("leaderboard").innerHTML = "<div class='empty'>Configure Firebase to share scores with the club.</div>"; return; }
+  leaderboardQuery = db.ref("leaderboard").orderByChild("wins").limitToLast(10);
+  leaderboardQuery.on("value", function(snapshot){
+    var entries=[]; snapshot.forEach(function(child){ var val=child.val()||{}; entries.push({name:val.name||"Reader",wins:Number(val.wins)||0,uid:child.key}); });
+    entries.sort(function(a,b){ return b.wins-a.wins || a.name.localeCompare(b.name); });
+    var root=$("leaderboard"); while(root.firstChild) root.removeChild(root.firstChild);
+    if(!entries.length){ root.innerHTML="<div class='empty'>No wins recorded yet. Start the first match!</div>"; return; }
+    var i,row,name,score;
+    for(i=0;i<entries.length;i++){
+      row=document.createElement("div"); row.className="rankrow";
+      name=document.createElement("span"); name.className="rankname"; name.textContent=(i+1)+". "+entries[i].name+(entries[i].uid===user.uid?" (you)":"");
+      score=document.createElement("span"); score.className="score"; score.textContent=entries[i].wins+ (entries[i].wins===1?" win":" wins");
+      row.appendChild(name); row.appendChild(score); root.appendChild(row);
+    }
+  }, function(){ $("leaderboard").innerHTML="<div class='empty'>Leaderboard unavailable. Check the Firebase rules.</div>"; });
+}
+
+/* ---------- Local mini-games ---------- */
+function heading(title, html){ gameArea.innerHTML = "<h3>"+title+"</h3>"+html; }
+function shuffleWord(s){ var a=s.split(""),i,j,t; for(i=a.length-1;i>0;i--){j=Math.floor(Math.random()*(i+1));t=a[i];a[i]=a[j];a[j]=t;} if(a.join("")===s) a.reverse(); return a.join(""); }
+$("wordBtn").onclick = function(){
+  var answer=words[Math.floor(Math.random()*words.length)];
+  heading("Word Scramble", "<p>Unscramble this word:</p><div class='word' id='scrambled'></div><form class='inline' id='wordForm'><input id='wordAnswer' placeholder='Your guess' aria-label='Your guess' required><button type='submit'>Check</button><button type='button' id='newWord'>New word</button></form><p class='game-status' id='wordStatus'></p>");
+  $("scrambled").textContent=shuffleWord(answer);
+  $("wordForm").onsubmit=function(e){e.preventDefault();$("wordStatus").textContent=$("wordAnswer").value.trim().toUpperCase()===answer?"Correct! Nice solving.":"Not quite — try again.";};
+  $("newWord").onclick=function(){ $("wordBtn").click(); };
+};
+$("guessBtn").onclick = function(){
+  var answer=1+Math.floor(Math.random()*20),tries=0;
+  heading("Number Guess", "<p>I picked a number from 1 to 20.</p><form id='guessForm' class='inline'><input id='guessAnswer' type='number' min='1' max='20' placeholder='1–20' required aria-label='Guess a number'><button type='submit'>Guess</button><button type='button' id='newGuess'>New number</button></form><p id='guessStatus' class='game-status'></p>");
+  $("guessForm").onsubmit=function(e){e.preventDefault();var n=Number($("guessAnswer").value);tries++;$("guessStatus").textContent=n===answer?"You got it in "+tries+" guesses!":""+(n<answer?"Too low — try again!":"Too high — try again!");if(n===answer)$("guessAnswer").disabled=true;};
+  $("newGuess").onclick=function(){ $("guessBtn").click(); };
+};
+$("memoryBtn").onclick = function(){
+  var vals=["BOOK","STAR","MOON","HEART","LEAF","TEA","BOOK","STAR","MOON","HEART","LEAF","TEA"], open=[], matched={}, moves=0, lock=false, i,j,t;
+  for(i=vals.length-1;i>0;i--){j=Math.floor(Math.random()*(i+1));t=vals[i];vals[i]=vals[j];vals[j]=t;}
+  heading("Memory Match", "<p>Find all six pairs. Moves: <strong id='moves'>0</strong></p><div id='memBoard' class='memboard'></div><p id='memoryStatus' class='game-status'></p><button type='button' id='newMemory'>Shuffle cards</button>");
+  function draw(){var root=$("memBoard");while(root.firstChild)root.removeChild(root.firstChild);for(var k=0;k<vals.length;k++){(function(index){var bt=document.createElement("button");bt.type="button";bt.className="memcard";bt.textContent=matched[index]||open.indexOf(index)>=0?vals[index]:"?";bt.disabled=!!matched[index]||open.indexOf(index)>=0||lock;bt.onclick=function(){if(lock||matched[index])return;open.push(index);if(open.length===2){moves++;$("moves").textContent=moves;if(vals[open[0]]===vals[open[1]]){matched[open[0]]=true;matched[open[1]]=true;open=[];if(Object.keys(matched).length===vals.length)$("memoryStatus").textContent="All pairs found in "+moves+" moves!";}else{lock=true;window.setTimeout(function(){open=[];lock=false;draw();},700);}}draw();};root.appendChild(bt);})(k);}}
+  $("newMemory").onclick=function(){ $("memoryBtn").click(); }; draw();
+};
+
+/* Clear hints if the SDK didn't load: local demo remains usable. */
+if(!localStorage.getItem("kc_name")) localStorage.setItem("kc_name", nickname);
+setupFirebase();
+</script>
+</body>
+</html>
