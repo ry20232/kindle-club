@@ -38,11 +38,10 @@
 </div>
 <aside class="sidecol">
 <section class="panel"><div class="panelhead"><h2>👤 Account & profile</h2></div><div class="inside">
-<form id="accountForm" onsubmit="return false"><label for="accountEmail"><strong>Email</strong></label><input id="accountEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
+<form id="accountForm" onsubmit="return false"><label for="accountUsername"><strong>Username</strong></label><input id="accountUsername" type="text" autocomplete="username" autocapitalize="none" maxlength="20" pattern="[A-Za-z0-9_.-]{3,20}" title="3–20 letters, numbers, dots, underscores, or hyphens" placeholder="Choose a username" required>
 <label for="accountPassword" style="display:block;margin-top:9px"><strong>Password</strong></label><input id="accountPassword" type="password" autocomplete="current-password" minlength="8" placeholder="At least 8 characters" required>
-<div class="account-actions"><button type="button" id="signInBtn">Sign in</button><button type="button" id="createAccountBtn">Create account</button></div>
-<div class="account-actions"><button type="button" id="resetPasswordBtn">Forgot password?</button><button type="button" id="signOutBtn" hidden>Sign out</button></div>
-<p id="accountNotice" class="tiny">Online accounts need the Firebase setup in SETUP.md. Local profile and games still work here.</p></form>
+<div class="account-actions"><button type="button" id="signInBtn">Sign in</button><button type="button" id="createAccountBtn">Create account</button><button type="button" id="signOutBtn" hidden>Sign out</button></div>
+<p id="accountNotice" class="tiny">Create an account with a username and password. No email address needed. Remember your password; email recovery isn't available.</p></form>
 <hr class="separator"><form id="profileForm"><label for="nickname"><strong>Nickname</strong></label><div class="inline" style="margin-top:7px"><input id="nickname" maxlength="24" autocomplete="nickname" placeholder="Choose a nickname" required><button type="submit">Save profile</button></div>
 <p class="tiny">Use a nickname, not your real name, school, address, or other private details.</p>
 <strong>Pixel-art profile picture</strong><div class="avatar-profile-row"><div id="avatarPreview" aria-label="Your pixel art avatar"></div><span class="tiny">Tap a square below to draw. Choose a colour first.</span></div><div id="avatarPalette" class="avatar-palette" aria-label="Avatar colours"></div><div id="avatarEditor" class="pixel-editor" aria-label="Edit your 8 by 8 pixel avatar"></div>
@@ -66,12 +65,6 @@ var FIREBASE_CONFIG = {
   databaseURL: "https://kindle-club-fc238-default-rtdb.firebaseio.com",
   projectId: "kindle-club-fc238",
   appId: "1:915428871009:web:70b4dc0b6de3370b5cd320"
-};
-
-  authDomain: "your-project.firebaseapp.com",
-  databaseURL: "https://YOUR-PROJECT-default-rtdb.firebaseio.com",
-  projectId: "your-project",
-  appId: "PASTE_YOUR_FIREBASE_APP_ID"
 };
 
 var $ = function(id){ return document.getElementById(id); };
@@ -226,45 +219,43 @@ $("clearAvatarBtn").onclick=function(){avatarPattern="0".repeat(64);localStorage
 drawPixelAvatarEditor();
 
 function setAccountNotice(text,error){$("accountNotice").textContent=text;$("accountNotice").className=error?"tiny status offline":"tiny";}
+function usernameEmail(value){return String(value||"").trim().toLowerCase()+"@kindleclub.invalid";}
+function validUsername(value){return /^[A-Za-z0-9_.-]{3,20}$/.test(String(value||"").trim());}
 function updateAccountUI(){
   var signed=!!(firebaseReady&&user);
-  $("accountEmail").disabled=signed||!firebaseReady; $("accountPassword").disabled=signed||!firebaseReady;
-  $("signInBtn").disabled=!firebaseReady; $("createAccountBtn").disabled=!firebaseReady; $("resetPasswordBtn").disabled=!firebaseReady;
-  $("signInBtn").hidden=signed; $("createAccountBtn").hidden=signed; $("resetPasswordBtn").hidden=signed; $("signOutBtn").hidden=!signed;
-  if(!firebaseReady)setAccountNotice("Online accounts need Firebase setup. See SETUP.md. Local games and a local profile still work.");
-  else if(signed)setAccountNotice("Signed in as "+(user.email||"your account")+". Your profile and moderation status sync online.");
-  else setAccountNotice("Create an account or sign in to use live chat, shared profiles, moderation, and multiplayer games.");
+  $("accountUsername").disabled=signed||!firebaseReady; $("accountPassword").disabled=signed||!firebaseReady;
+  $("signInBtn").disabled=!firebaseReady; $("createAccountBtn").disabled=!firebaseReady;
+  $("signInBtn").hidden=signed; $("createAccountBtn").hidden=signed; $("signOutBtn").hidden=!signed;
+  if(!firebaseReady)setAccountNotice("Online accounts need Firebase setup. Local games and a local profile still work.");
+  else if(signed)setAccountNotice("Signed in successfully. Your profile and moderation status sync online.");
+  else setAccountNotice("Use your username and password to sign in, or create an account. No real email needed.");
 }
 function authErrorMessage(err){
   var code=err&&err.code||"";
-  if(code.indexOf("email-already-in-use")>=0)return "That email already has an account. Try signing in.";
-  if(code.indexOf("invalid-email")>=0)return "Enter a valid email address.";
-  if(code.indexOf("weak-password")>=0)return "Choose a stronger password with at least 8 characters.";
-  if(code.indexOf("user-not-found")>=0||code.indexOf("invalid-credential")>=0||code.indexOf("wrong-password")>=0)return "Email or password didn't match. Check them and try again.";
-  if(code.indexOf("operation-not-allowed")>=0)return "Email/password sign-in is not enabled in Firebase Authentication yet. See SETUP.md.";
+  if(code.indexOf("email-already-in-use")>=0)return "That username is already taken. Choose another one or sign in.";
+  if(code.indexOf("invalid-email")>=0)return "That username could not be used. Try another username.";
+  if(code.indexOf("weak-password")>=0)return "Choose a password with at least 8 characters.";
+  if(code.indexOf("user-not-found")>=0||code.indexOf("invalid-credential")>=0||code.indexOf("wrong-password")>=0)return "Username or password didn't match. Check them and try again.";
+  if(code.indexOf("operation-not-allowed")>=0)return "Email/password sign-in is not enabled in Firebase Authentication yet. Enable it in Firebase Console.";
   return (err&&err.message)||"Something went wrong. Please try again.";
 }
 function signInAccount(){
-  if(!firebaseReady||!auth){setAccountNotice("Firebase isn't configured yet. See SETUP.md.",true);return;}
-  var email=$("accountEmail").value.trim(),password=$("accountPassword").value;
-  if(!email||!password){setAccountNotice("Enter your email and password first.",true);return;}
-  auth.signInWithEmailAndPassword(email,password).then(function(){$("accountPassword").value="";}).catch(function(err){setAccountNotice(authErrorMessage(err),true);});
+  if(!firebaseReady||!auth){setAccountNotice("Firebase isn't configured yet.",true);return;}
+  var username=$("accountUsername").value.trim(),password=$("accountPassword").value;
+  if(!validUsername(username)){setAccountNotice("Username must be 3–20 characters using letters, numbers, dots, underscores, or hyphens.",true);return;}
+  if(!password){setAccountNotice("Enter your password.",true);return;}
+  auth.signInWithEmailAndPassword(usernameEmail(username),password).then(function(){$("accountPassword").value="";}).catch(function(err){setAccountNotice(authErrorMessage(err),true);});
 }
 function createAccount(){
-  if(!firebaseReady||!auth){setAccountNotice("Firebase isn't configured yet. See SETUP.md.",true);return;}
-  var email=$("accountEmail").value.trim(),password=$("accountPassword").value;
-  if(!email||!password){setAccountNotice("Enter an email and password first.",true);return;}
+  if(!firebaseReady||!auth){setAccountNotice("Firebase isn't configured yet.",true);return;}
+  var username=$("accountUsername").value.trim(),password=$("accountPassword").value;
+  if(!validUsername(username)){setAccountNotice("Username must be 3–20 characters using letters, numbers, dots, underscores, or hyphens.",true);return;}
   if(password.length<8){setAccountNotice("Choose a password with at least 8 characters.",true);return;}
-  auth.createUserWithEmailAndPassword(email,password).then(function(){$("accountPassword").value="";}).catch(function(err){setAccountNotice(authErrorMessage(err),true);});
+  nickname=username; localStorage.setItem("kc_name",nickname); $("nickname").value=nickname;
+  auth.createUserWithEmailAndPassword(usernameEmail(username),password).then(function(){$("accountPassword").value="";}).catch(function(err){setAccountNotice(authErrorMessage(err),true);});
 }
 $("signInBtn").onclick=signInAccount;
 $("createAccountBtn").onclick=createAccount;
-$("resetPasswordBtn").onclick=function(){
-  var email=$("accountEmail").value.trim();
-  if(!firebaseReady||!auth){setAccountNotice("Firebase isn't configured yet.",true);return;}
-  if(!email){setAccountNotice("Enter your email above, then choose Forgot password.",true);return;}
-  auth.sendPasswordResetEmail(email).then(function(){setAccountNotice("Password-reset email sent if that account exists. Check your inbox.");}).catch(function(err){setAccountNotice(authErrorMessage(err),true);});
-};
 $("signOutBtn").onclick=function(){if(auth)auth.signOut().catch(function(err){setAccountNotice(authErrorMessage(err),true);});};
 
 function stopRefs(refs){while(refs.length){var r=refs.pop();try{r.off();}catch(e){}}}
@@ -333,13 +324,13 @@ function setModeration(uid,name,action,minutes){
 }
 
 function setupFirebase(){
-  var configured=FIREBASE_CONFIG.apiKey.indexOf("PASTE_")!==0&&FIREBASE_CONFIG.projectId!=="your-project"&&FIREBASE_CONFIG.databaseURL.indexOf("YOUR-PROJECT")<0&&FIREBASE_CONFIG.appId.indexOf("PASTE_")!==0;
+  var configured=!!(FIREBASE_CONFIG.apiKey&&FIREBASE_CONFIG.projectId&&FIREBASE_CONFIG.databaseURL&&FIREBASE_CONFIG.appId)&&FIREBASE_CONFIG.projectId!=="your-project";
   if(!configured||typeof firebase==="undefined"||!firebase.initializeApp){
     firebaseReady=false;onlineReady=false;setStatus("Local demo mode","offline");$("setupBanner").style.display="block";$("setupBanner").textContent="Local demo mode: local mini-games and pass-and-play Tic-Tac-Toe work now. Online accounts, shared chat, remote Tic-Tac-Toe and moderation will work only after you add your Firebase web config to index.html and publish firebase-rules.json in Firebase Console. Follow SETUP.md step by step.";updateAccountUI();attachChat();attachGame();attachLeaderboard();attachModeration();return;
   }
   try{firebase.initializeApp(FIREBASE_CONFIG);db=firebase.database();auth=firebase.auth();firebaseReady=true;setStatus("Sign in to connect","offline");}
   catch(e){firebaseReady=false;setStatus("Local demo mode","offline");updateAccountUI();attachChat();return;}
-  updateAccountUI();$("setupBanner").style.display="block";$("setupBanner").textContent="Create an account or sign in below to use live rooms. The site owner must also complete the one-time admin setup in SETUP.md.";
+  updateAccountUI();$("setupBanner").style.display="block";$("setupBanner").textContent="Create a username and password below to use live rooms. The site owner must also complete the one-time admin setup in SETUP.md.";
   auth.onAuthStateChanged(function(authUser){
     detachModeration();user=authUser||null;onlineReady=!!user;updateAccountUI();
     if(!user){setStatus("Sign in to connect","offline");$("setupBanner").style.display="block";attachChat();attachGame();attachLeaderboard();attachModeration();return;}
@@ -523,4 +514,3 @@ setupFirebase();
 </script>
 </body>
 </html>
-
